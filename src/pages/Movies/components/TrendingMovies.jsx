@@ -15,7 +15,7 @@ const TrendingMovies = memo(() => {
 
   return (
 
-    <section className="trending-movies wrapper">
+    <section className="trending-movies my-10">
       {/* <h2 className="flex items-center gap-2 text-2xl font-bold mb-6 px-4">
         <Clapperboard className="w-6 h-6" />
         Trending Movies

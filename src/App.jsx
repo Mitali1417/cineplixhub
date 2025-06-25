@@ -7,7 +7,6 @@ import NetworkStatus from "./components/ui/NetworkStatus.jsx";
 import Movies from "./pages/Movies/Movies.jsx";
 import MovieLayout from "./components/layout/MovieLayout.jsx";
 import { Suspense } from "react";
-import LoadingScreen from "./components/ui/LoadingScreen.jsx";
 import NotFound from "./components/shared/NotFound.jsx";
 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
@@ -30,7 +29,7 @@ const queryClient = new QueryClient({
 const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
-      <Suspense fallback={<LoadingScreen />}>
+      <Suspense fallback={<Preloader />}>
         <Router>
           <SmoothScroll />
           <Preloader>

@@ -1,7 +1,6 @@
 import { AlertCircle } from "lucide-react";
 import { SearchX } from "lucide-react";
-import { useState, useEffect, useRef } from "react";
-import { Film } from "lucide-react";
+import { useEffect, useRef } from "react";
 import useMovieStore from "../store/movieStore";
 import { useDebounced } from "../hooks/useDebounce";
 import useSearchAll from "../hooks/useSearchAll";
@@ -77,14 +76,13 @@ const SearchMovies = () => {
   }, [isLoading, isFetchingNextPage, hasNextPage]);
 
   return (
-    <section className="py-8">
+    <section className="py-8 mt-20">
       <div className="flex justify-between items-center mb-6 px-4">
-        <h2 className="flex items-center gap-2 text-2xl font-bold">
-          <Film className="w-6 h-6 text-white" />
+        <h2 className="flex items-start text-center mx-auto gap-2 text-2xl font-bold">
           <span>
             {debouncedSearchTerm
               ? `Search: ${debouncedSearchTerm}`
-              : `Search your Favorite Movies, TV shows, and more`}
+              : `Search your Favorite Movies & TV shows`}
           </span>
         </h2>
         {/* Show total results when searching */}

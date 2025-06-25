@@ -9,7 +9,7 @@ const Preloader = ({ children }) => {
 
   useEffect(() => {
     let completed = 0;
-    const total = 6; // Adjust based on how many things you're loading
+    const total = 3; // Adjust based on how many things you're loading
 
     const handleProgress = () => {
       completed++;

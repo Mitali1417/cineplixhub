@@ -44,7 +44,7 @@ export const MovieCard = memo(({ movie }) => {
       onClick={handleClick}
       className="movie-card group cursor-pointer shadow-lg transition-all duration-500 ease-in-out shadow-transparent hover:shadow-teal-400/20 rounded-lg flex flex-col"
     >
-      <div className={`relative ${randomImageHeightClass} w-full pb-[150%] rounded-t-lg`}> {/* Using pb-[150%] for 2:3 aspect ratio (height is 150% of width) */}
+      <div className={`relative ${randomImageHeightClass} w-full pb-[150%] rounded-t-lg`}>
         {/* {!imageLoaded && (
           <div className="absolute inset-0">
             <MovieLoader />
@@ -69,8 +69,8 @@ export const MovieCard = memo(({ movie }) => {
         />
       </div>
 
-      <div className="mt-4 p-2 flex-grow"> {/* Added flex-grow to let this section take available space */}
-        <h3 className="font-semibold text-teal-400">
+      <div className="mt-10 p-2 flex-grow"> 
+        <h3 className="text-lg font-semibold text-teal-400">
           {movie?.original_title || movie?.original_name}
         </h3>
 
