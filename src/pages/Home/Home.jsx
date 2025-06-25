@@ -6,6 +6,8 @@ import { useGSAP } from "@gsap/react";
 import TrendingMovies from "../Movies/components/TrendingMovies.jsx";
 import AllMovies from "../Movies/components/AllMovies.jsx";
 import { useInfiniteTopRatedMovies } from "../../hooks/useTMDBQueries.js";
+import { CustomCursor } from "../../components/ui/CustomCursor.jsx";
+import CircularTextRing from "../../components/ui/CircularTextRing.jsx";
 
 gsap.registerPlugin(DrawSVGPlugin, ScrollTrigger);
 
@@ -47,7 +49,7 @@ export const HeroMovieSlider = () => {
 };
 
 const HeroHeader = () => {
-   const heroTextRef = useRef(null);
+  const heroTextRef = useRef(null);
 
   useGSAP(() => {
     const q = gsap.utils.selector(heroTextRef);
@@ -64,18 +66,17 @@ const HeroHeader = () => {
       scale: 1,
       duration: 1.6,
       ease: "elastic.out(1.2, 0.7)",
-    })
-      .to(
-        q("span:nth-child(2)"),
-        {
-          opacity: 1,
-          y: 0,
-          scale: 1,
-          duration: 1.6,
-          ease: "elastic.out(1.2, 0.7)",
-        },
-        "<+0.2"
-      );
+    }).to(
+      q("span:nth-child(2)"),
+      {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        duration: 1.6,
+        ease: "elastic.out(1.2, 0.7)",
+      },
+      "<+0.2"
+    );
 
     // ScrollTrigger for marquee
     // gsap.fromTo(
@@ -112,19 +113,24 @@ const HeroHeader = () => {
 
   return (
     <header className="flex flex-col md:mb-12">
-      <div className="!pointer-events-none relative">
-        <div ref={heroTextRef} className="relative translate-y-3/4 w-fit mx-auto flex text-[85px] md:text-[170px] xl:text-[240px] font-[1000] md:leading-64 justify-center">
+      <div className="relative">
+        <div
+          ref={heroTextRef}
+          className="relative translate-y-3/4 w-fit mx-auto flex text-[85px] md:text-[170px] xl:text-[240px] font-[1000] md:leading-64 justify-center"
+        >
           <span
-            className="font-playfair font-extrabold opacity-0 pointer-events-none text-white"
+            data-cursor-scale="2.5"
+            className="font-playfair font-extrabold opacity-0 text-white"
           >
             Cine
           </span>
           <span
-            className="font-playfair font-extrabold text-gradient opacity-0 transform translate-y-5 scale-90 !pointer-events-none"
+            data-cursor-scale="2.5"
+            className="font-playfair font-extrabold text-gradient opacity-0 transform translate-y-5 scale-90"
           >
             plix
           </span>
-          <p className="absolute bottom-2 md:bottom-6 xl:-bottom-1 left-8 md:left-[136px] xl:left-[300px] right-0 mx-auto pointer-events-none font-light text-xs md:text-lg">
+          <p className="text-white absolute bottom-2 md:bottom-6 xl:-bottom-1 left-8 md:left-[136px] xl:left-[300px] right-0 mx-auto pointer-events-none font-light text-xs md:text-lg">
             Find Movies You will Enjoy{" "}
             <span className="ml-8 md:ml-18">Without the Hassle</span>
           </p>
@@ -168,13 +174,23 @@ const HeroHeader = () => {
 const HomeContent = () => {
   return (
     <main className="relative">
-      <HeroMovieSlider />
-      <div className="absolute top-44 left-0 right-0">
-        <HeroHeader />
-      </div>
+      <CircularTextRing
+        text="Cineplix • "
+        radius={5}
+        fontSize={1.5}
+        animationDuration={15}
+        className="text-white absolute top-10 left-0"
+      />
+      <CustomCursor enableCustomScales={true} targetSection="#hero-section" />
+      <div id="hero-section">
+        <HeroMovieSlider />
+        <div className="absolute top-44 left-0 right-0">
+          <HeroHeader />
+        </div>
 
-      <div id="trending-movies">
-        <TrendingMovies />
+        <div id="trending-movies">
+          <TrendingMovies />
+        </div>
       </div>
 
       <div id="all-movies">

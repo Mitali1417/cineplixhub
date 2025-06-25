@@ -272,7 +272,7 @@ const Movies = () => {
 
           {totalResults > 0 && (
             <div className="mb-4 text-center">
-              <p className=" text-xs md:text-lg">
+              <p className=" text-xs md:text-sm">
                 Showing {sectionData?.length || 0} of {totalResults} results
                 {currentPage > 0 && ` (Page ${currentPage} of ${totalPages})`}
               </p>
@@ -333,7 +333,7 @@ const Movies = () => {
                   {isFetchingNextPage && (
                     <div className="flex items-center gap-2">
                       <Spinner />
-                      <span className="text-gray-600">Loading more...</span>
+                      <span>Loading more...</span>
                     </div>
                   )}
                 </div>

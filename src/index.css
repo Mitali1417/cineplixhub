@@ -474,3 +474,36 @@ body::-webkit-scrollbar-thumb:hover {
   transform: scale(1.1) rotate(2deg);
   box-shadow: 0 0 20px 5px rgba(255, 255, 255, 0.6);
 }
+
+
+.circular-text-container {
+  animation: spin var(--animation-duration, 20s) linear infinite;
+}
+
+.text-ring {
+  position: relative;
+  display: inline-block;
+  width: calc(var(--radius, 5) * 2ch + var(--font-size, 2) * 1rem);
+  height: calc(var(--radius, 5) * 2ch + var(--font-size, 2) * 1rem);
+}
+
+.text-ring [style*="--index"] {
+  font-weight: bold;
+  font-family: monospace;
+  text-transform: uppercase;
+  /* font-size: calc(var(--font-size, 2) * 1rem); */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: 
+    translate(-50%, -50%)
+    rotate(calc(360deg / var(--total) * var(--index)))
+    translateY(calc(var(--radius, 5) * -1ch));
+  transform-origin: center center;
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
